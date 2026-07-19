@@ -1,0 +1,25 @@
+# Use this profile when you want to use MySQL: -Dspring.profiles.active=mysql
+# Optional: create DB manually with "CREATE DATABASE cafedb;" (or let the app create it via createDatabaseIfNotExist=true)
+# Set MYSQL_PASSWORD env if your MySQL user has a password (default: user root, no password)
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/cafedb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: false
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: embedded
+  # Seed data is not run with MySQL (only with embedded H2). Run data.sql once in MySQL if the DB is empty.
+
+  h2:
+    console:
+      enabled: false

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H2 Console — Connection</title>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 2rem; max-width: 560px; background: #1a1a2e; color: #e8e8e8; }
+    h1 { font-size: 1.25rem; color: #a5d6ff; margin-bottom: 0.5rem; }
+    p { margin: 0.75rem 0; color: #94a3b8; font-size: 0.95rem; }
+    .box { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+    .box label { display: block; font-size: 0.8rem; color: #93c5fd; margin-bottom: 0.25rem; }
+    .box code, .box input { display: block; width: 100%; box-sizing: border-box; padding: 0.5rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: #e8e8e8; font-family: monospace; font-size: 0.9rem; }
+    .box input { cursor: pointer; }
+    a.btn { display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; background: #14b8a6; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; }
+    a.btn:hover { background: #0d9488; }
+    .warn { background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 8px; padding: 0.75rem; margin: 1rem 0; font-size: 0.9rem; color: #fcd34d; }
+  </style>
+</head>
+<body>
+  <h1>H2 Console — Use these settings</h1>
+  <div class="warn" style="margin-bottom: 1rem;">
+    <strong>If you see “Database mem:cafedb not found”</strong> — you used the wrong URL. This app uses a <strong>file</strong> database, not in-memory. Clear “Saved Settings” or pick “Generic H2 (Embedded)” and paste the JDBC URL below. Do <strong>not</strong> use <code>jdbc:h2:mem:cafedb</code>.
+  </div>
+  <p>The app uses a <strong>file-based</strong> database. In the H2 Console login, use the values below.</p>
+
+  <div class="box">
+    <label>JDBC URL (click to copy — use this in H2 Console)</label>
+    <input type="text" id="jdbcUrl" value="jdbc:h2:file:./cafedb" readonly onclick="this.select(); navigator.clipboard.writeText(this.value);" title="Click to copy" />
+    <p style="margin:0.5rem 0 0; font-size:0.85rem; color:#94a3b8;">Loading absolute URL from server…</p>
+  </div>
+  <div class="box">
+    <label>User Name</label>
+    <input type="text" value="sa" readonly />
+  </div>
+  <div class="box">
+    <label>Password</label>
+    <input type="text" value="" readonly placeholder="(leave empty)" />
+  </div>
+
+  <p class="warn">If connection still fails, ensure the backend is running and refresh this page so the URL above is the <strong>absolute</strong> path from the server. Do not use <code>jdbc:h2:mem:cafedb</code>.</p>
+
+  <a href="/h2-console" class="btn">Open H2 Console →</a>
+  <script>
+    (function() {
+      var input = document.getElementById('jdbcUrl');
+      var msg = input.nextElementSibling;
+      fetch('/api/health/h2-url').then(function(r) { return r.json(); }).then(function(d) {
+        if (d.jdbcUrl) { input.value = d.jdbcUrl; }
+        if (msg) msg.textContent = 'Use this URL in the H2 Console login (same DB as the app).';
+      }).catch(function() {
+        if (msg) msg.textContent = 'Using relative URL. If connection fails, start backend from digital-cafe-backend folder.';
+      });
+    })();
+  </script>
+</body>
+</html>
