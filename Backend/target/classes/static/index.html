@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Cafe API</title>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 2rem; max-width: 640px; background: #1a1a2e; color: #e8e8e8; }
+    h1 { font-size: 1.5rem; color: #a5d6ff; margin-bottom: 0.5rem; }
+    p { margin: 0.75rem 0; color: #94a3b8; font-size: 0.95rem; }
+    .card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+    .card h2 { font-size: 1rem; color: #93c5fd; margin: 0 0 0.5rem 0; }
+    a { color: #38bdf8; }
+    a.btn { display: inline-block; margin: 0.25rem 0.25rem 0 0; padding: 0.5rem 1rem; background: #14b8a6; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; }
+    a.btn:hover { background: #0d9488; }
+    code { background: rgba(0,0,0,0.3); padding: 0.2em 0.4em; border-radius: 4px; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <h1>Digital Cafe API</h1>
+  <p>Backend is running. Use the frontend at <code>http://localhost:3000</code> or the API at <code>http://localhost:8081</code>.</p>
+
+  <div class="card">
+    <h2>H2 Database Console</h2>
+    <p>Use <strong>file</strong> URL, not in-memory. If you see “Database mem:cafedb not found”, use the URL below in the H2 Console.</p>
+    <p><strong>JDBC URL:</strong> <code>jdbc:h2:file:./cafedb</code> &nbsp; <strong>User:</strong> <code>sa</code> &nbsp; <strong>Password:</strong> (empty)</p>
+    <p>
+      <a href="/h2-console" class="btn">Open H2 Console</a>
+      <a href="/h2-console-help.html" class="btn">Get JDBC URL (copy-paste)</a>
+    </p>
+  </div>
+</body>
+</html>
