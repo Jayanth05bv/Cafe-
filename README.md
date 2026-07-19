@@ -19,9 +19,9 @@ It includes:
 ## Project Structure
 
 ```text
-digital-cafe-fullstack/
-|- digital-cafe-frontend/
-|- digital-cafe-backend/
+Cafe/
+|- frontend/
+|- backend/
 |- END-TO-END-SETUP.md
 |- INTEGRATION.md
 |- run-app.bat
@@ -42,14 +42,14 @@ digital-cafe-fullstack/
 1. Start backend:
 
 ```powershell
-cd digital-cafe-backend
+cd backend
 .\mvnw.cmd spring-boot:run
 ```
 
 2. Start frontend:
 
 ```powershell
-cd digital-cafe-frontend
+cd frontend
 npm start
 ```
 
@@ -60,14 +60,14 @@ npm start
 
 ### Option 2: Use MySQL
 
-See [END-TO-END-SETUP.md](C:/Users/Nikhil%20Sinha/Downloads/integrate%20(2)/integrate/digital-cafe-fullstack/END-TO-END-SETUP.md) for the full MySQL setup.
+See [END-TO-END-SETUP.md](Cafe/END-TO-END-SETUP.md) for the full MySQL setup.
 
 ## Environment Configuration
 
 Backend configuration is mainly read from:
-- [`application.yml`](C:/Users/Nikhil%20Sinha/Downloads/integrate%20(2)/integrate/digital-cafe-fullstack/digital-cafe-backend/src/main/resources/application.yml)
-- [`digital-cafe-backend/.env.bat`](C:/Users/Nikhil%20Sinha/Downloads/integrate%20(2)/integrate/digital-cafe-fullstack/digital-cafe-backend/.env.bat)
-- [`digital-cafe-backend/.env.example.bat`](C:/Users/Nikhil%20Sinha/Downloads/integrate%20(2)/integrate/digital-cafe-fullstack/digital-cafe-backend/.env.example.bat)
+- [`application.yml`](Cafe/backend/src/main/resources/application.yml)
+- [`backend/.env.bat`](Cafe/backend/.env.bat)
+- [`backend/.env.example.bat`](Cafe/backend/.env.example.bat)
 
 Important variables:
 - `MAIL_ENABLED`
@@ -83,7 +83,7 @@ Important variables:
 
 This project already supports Razorpay test checkout.
 
-Set these in `digital-cafe-backend/.env.bat`:
+Set these in `backend/.env.bat`:
 
 ```bat
 set RAZORPAY_ENABLED=true
@@ -107,18 +107,18 @@ Then restart the backend.
 8. Order is marked paid
 
 Relevant files:
-- [`UserPaymentPortal.jsx`](C:/Users/Nikhil%20Sinha/Downloads/integrate%20(2)/integrate/digital-cafe-fullstack/digital-cafe-frontend/src/pages/UserPaymentPortal.jsx)
-- [`CustomerController.java`](C:/Users/Nikhil%20Sinha/Downloads/integrate%20(2)/integrate/digital-cafe-fullstack/digital-cafe-backend/src/main/java/com/cafe/controller/CustomerController.java)
-- [`PaymentService.java`](C:/Users/Nikhil%20Sinha/Downloads/integrate%20(2)/integrate/digital-cafe-fullstack/digital-cafe-backend/src/main/java/com/cafe/service/PaymentService.java)
+- [`UserPaymentPortal.jsx`](Cafe/frontend/src/pages/UserPaymentPortal.jsx)
+- [`CustomerController.java`](Cafe/backend/src/main/java/com/cafe/controller/CustomerController.java)
+- [`PaymentService.java`](cafe/backend/src/main/java/com/cafe/service/PaymentService.java)
 
 ## Useful Files
 
 - Backend README:
-  [`digital-cafe-backend/README.md`](C:/Users/Nikhil%20Sinha/Downloads/integrate%20(2)/integrate/digital-cafe-fullstack/digital-cafe-backend/README.md)
+  [`digital-cafe-backend/README.md`](cafe/backend/README.md)
 - Integration notes:
-  [`INTEGRATION.md`](C:/Users/Nikhil%20Sinha/Downloads/integrate%20(2)/integrate/digital-cafe-fullstack/INTEGRATION.md)
+  [`INTEGRATION.md`](cafe/INTEGRATION.md)
 - End-to-end setup:
-  [`END-TO-END-SETUP.md`](C:/Users/Nikhil%20Sinha/Downloads/integrate%20(2)/integrate/digital-cafe-fullstack/END-TO-END-SETUP.md)
+  [`END-TO-END-SETUP.md`](Cafe/END-TO-END-SETUP.md)
 
 ## Current Highlights
 
